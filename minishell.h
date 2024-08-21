@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 22:37:50 by bmestini          #+#    #+#             */
-/*   Updated: 2024/07/17 22:37:51 by bmestini         ###   ########.fr       */
+/*   Updated: 2024/08/21 21:20:24 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,11 @@ typedef struct s_env
 	char				*value;
 	struct s_env		*next;
 }						t_env;
-
+typedef struct s_malloc
+{
+    void *address_to_save;      
+    struct s_malloc *next;     
+} t_malloc;
 ///////////////////execute////////////
 typedef struct s_file
 {
@@ -138,5 +142,6 @@ char					*get_env_value(t_env *env, char *key);
 ///////////////////////////////free///////////////////////
 
 void	gc_push(void *address_to_save);
-
+void	error_exit(int status, char *str);
+void	_free(void);
 #endif
