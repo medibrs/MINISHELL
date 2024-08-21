@@ -27,7 +27,7 @@ UTILS = parsing/utils/ft_lexer_new.c parsing/utils/ft_lstsize.c parsing/utils/ft
 LIXER = parsing/lexer.c parsing/display_tokens.c parsing/syntax_error.c
 PARSRE = parsing/parse.c parsing/parser_box.c
 EXPAND = parsing/env_linkedlist.c parsing/expand.c parsing/expand_box.c
-# FREE = ./gc/gc.c ./gc/error_exit.c
+FREE = ./garbage_collector/gc.c ./garbage_collector/error_exit.c
 
 SRC = main.c loop_minishell.c ${UTILS} ${FREE} ${LIBFT_SRC} ${LIXER} ${PARSRE} ${EXPAND}
 
