@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loop_minishell.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 06:37:36 by bmestini          #+#    #+#             */
-/*   Updated: 2024/07/31 06:37:37 by bmestini         ###   ########.fr       */
+/*   Updated: 2024/10/03 18:47:27 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,7 @@ void execute_piped_command(t_command *command, t_env *envar)
 
             // Execute the current command
             execute_simple_command(smpl_cmd, envar);
-
-            // Exit after command execution
-            exit(1);
+			_free();
         }
         else // Parent process
         {
@@ -221,7 +219,7 @@ void	loop_minishell(t_tool *data, t_env *env)
 			hayed_3liya(&command_list);
 			// display_token_command(command_list);
 			execute_piped_command(command_list, env);
-			free(data->cmd);
+			// free(data->cmd);
 		}
 		else if (!data->cmd)
 		{
