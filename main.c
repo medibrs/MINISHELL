@@ -6,15 +6,13 @@
 /*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:49:44 by bmestini          #+#    #+#             */
-/*   Updated: 2024/10/08 23:25:13 by mbouras          ###   ########.fr       */
+/*   Updated: 2024/10/09 00:15:46 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <readline/history.h>
 #include <readline/readline.h>
-
-// syntax error checking/
 
 t_minishell_collecter	*get_collector(void)
 {
@@ -31,8 +29,6 @@ t_minishell_collecter	*get_collector(void)
 	}
 	return (lists_collecter);
 }
-
-// t_minishell_collecter	*g_lists_collecter;
 
 int	syntax_checker(t_token *tokens, char *str)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   new_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 23:02:20 by mbouras           #+#    #+#             */
-/*   Updated: 2024/10/07 23:02:22 by mbouras          ###   ########.fr       */
+/*   Updated: 2024/10/09 00:12:07 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,6 @@ int	c_builtin(t_minishell *singl_mini, t_env_var **env)
 	if (strncmp("exit", singl_mini->command, 5) == 0)
 		return (fake_exit(singl_mini, *env), 0);
 	return (1);
-}
-
-int	cmd_count(t_minishell *minishell)
-{
-	int	count;
-
-	count = 0;
-	while (minishell)
-	{
-		count++;
-		minishell = minishell->next;
-	}
-	return (count);
 }
 
 int	get_is_builtin(char *cmd)

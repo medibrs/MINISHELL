@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <bmestini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:49:59 by bmestini          #+#    #+#             */
-/*   Updated: 2024/10/08 08:50:02 by bmestini         ###   ########.fr       */
+/*   Updated: 2024/10/09 00:20:23 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,18 +77,4 @@ void	get_env_var(t_env_var **env, char **base_env)
 	inc_shlvl(*env);
 	at_end(env, "OLDPWD");
 	at_end(env, "_");
-}
-
-t_env_var	*env_bykey(t_env_var *env, char *key)
-{
-	t_env_var	*temp;
-
-	temp = env;
-	while (temp)
-	{
-		if (ft_strncmp(temp->key, key, ft_strlen(temp->key) + 1) == 0)
-			return (temp);
-		temp = temp->next;
-	}
-	return (NULL);
 }

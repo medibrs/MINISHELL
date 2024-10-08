@@ -4,24 +4,25 @@ CFLAGS = -Wall -Werror -Wextra -fPIC -g3 -I/usr/local/opt/readline/include
 LDFLAGS = -L/usr/local/opt/readline/lib -lreadline
 
 SRC = main.c \
-      folder_builtin/new_cmd_cd.c \
-      folder_builtin/new_cmd_echo.c \
-      folder_builtin/new_cmd_pwd.c \
-      folder_builtin/new_env.c \
-      folder_builtin/new_exit.c \
-      folder_builtin/new_export_add.c \
-      folder_builtin/new_export_print.c \
-      folder_builtin/new_export.c \
-      folder_builtin/new_unset.c \
-      folder_execution/new_execution.c \
-      folder_execution/new_here_doc.c \
-      folder_execution/new_multiple_cmds.c \
-      folder_execution/new_open_files.c \
-      folder_execution/new_pipe_init.c \
-      folder_execution/new_single_cmd.c \
-      folder_execution/new_utils.c \
-      folder_execution/new_utils1.c \
-      folder_execution/new_utils2.c \
+      folder_builtin/cmd_cd.c \
+      folder_builtin/cmd_echo.c \
+      folder_builtin/cmd_pwd.c \
+      folder_builtin/ms_env.c \
+      folder_builtin/ms_exit.c \
+      folder_builtin/ms_export_add.c \
+      folder_builtin/ms_export_print.c \
+      folder_builtin/ms_export.c \
+      folder_builtin/ms_unset.c \
+      folder_execution/ms_execution.c \
+      folder_execution/ms_here_doc.c \
+      folder_execution/ms_multiple_cmds.c \
+      folder_execution/ms_open_files.c \
+      folder_execution/ms_pipe_init.c \
+      folder_execution/ms_single_cmd.c \
+      folder_execution/ms_utils.c \
+      folder_execution/ms_utils1.c \
+      folder_execution/ms_utils2.c \
+      folder_execution/ms_utils3.c \
       parsing/check_syntax_error.c \
       parsing/check_syntax_error2.c \
       parsing/delete_quotes_utils.c \
@@ -48,6 +49,7 @@ SRC = main.c \
       new_env.c \
       new_env2.c \
       new_env3.c \
+      new_env4.c \
       signals.c
 
 LIBFT_DIR = lib/libft

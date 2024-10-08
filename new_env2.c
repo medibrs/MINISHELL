@@ -6,7 +6,7 @@
 /*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:50:04 by bmestini          #+#    #+#             */
-/*   Updated: 2024/10/08 23:25:52 by mbouras          ###   ########.fr       */
+/*   Updated: 2024/10/09 00:19:58 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,4 @@ void	at_end(t_env_var **env, char *target_key)
 		previuos->next = target->next;
 	target->next = NULL;
 	last->next = target;
-}
-
-char	*c_paths(void)
-{
-	char	*p;
-
-	p = ft_strdup(
-			"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-			);
-	return (p);
 }

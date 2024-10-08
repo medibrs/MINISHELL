@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_2.c                                          :+:      :+:    :+:   */
+/*   new_utils2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 23:01:53 by mbouras           #+#    #+#             */
-/*   Updated: 2024/10/07 23:01:55 by mbouras          ###   ########.fr       */
+/*   Updated: 2024/10/09 00:10:51 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-int	is_directory(char *cmd)
-{
-	struct stat	path_stat;
-
-	if (stat(cmd, &path_stat) != 0)
-		return (0);
-	return (S_ISDIR(path_stat.st_mode));
-}
 
 int	empty_cmd(char *cmd)
 {

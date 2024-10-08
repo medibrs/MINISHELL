@@ -6,7 +6,7 @@
 /*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:50:09 by bmestini          #+#    #+#             */
-/*   Updated: 2024/10/08 23:27:58 by mbouras          ###   ########.fr       */
+/*   Updated: 2024/10/09 00:19:11 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,27 +67,6 @@ void	set_exit_code(t_env_var *env, int new_val)
 			free(exit_stat->value);
 		exit_stat->value = ft_putnbr(new_val);
 	}
-}
-
-t_env_var	*c_env(void)
-{
-	t_env_var	*env;
-	char		current_path[1024];
-
-	if (getcwd(current_path, 1024) == NULL)
-	{
-		perror("getcwd");
-		exit(1);
-	}
-	env = NULL;
-	env_add_back(&env, env_node_new(ft_strdup("PATH"), c_paths()));
-	env_add_back(&env, env_node_new(ft_strdup("PWD"), ft_strdup(current_path)));
-	env_add_back(&env, env_node_new(ft_strdup("SHLVL"), ft_strdup("1")));
-	env_add_back(&env, env_node_new(ft_strdup("?"), ft_strdup("0")));
-	env_add_back(&env, env_node_new(ft_strdup("OLDPWD"), NULL));
-	env_add_back(&env, env_node_new(ft_strdup("_"), ft_strdup("]")));
-	(get_collector())->p = 0;
-	return (env);
 }
 
 void	inc_shlvl(t_env_var *env)

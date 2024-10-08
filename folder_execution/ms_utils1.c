@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_1.c                                          :+:      :+:    :+:   */
+/*   new_utils1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 23:01:48 by mbouras           #+#    #+#             */
-/*   Updated: 2024/10/07 23:01:59 by mbouras          ###   ########.fr       */
+/*   Updated: 2024/10/09 00:11:37 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,6 @@ int	parse_cmds(char *command)
 	if (empty_cmd(command))
 		exit(127);
 	return (0);
-}
-
-void	f_split(char **splited)
-{
-	int	i;
-
-	i = 0;
-	while (splited && splited[i])
-		free(splited[i++]);
-	if (splited)
-		free(splited);
 }
 
 char	**check_paths(t_env_var *temp, char *cmd)
