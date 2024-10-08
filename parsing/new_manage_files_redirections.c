@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   new_manage_files_redirections.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <bmestini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:48:53 by bmestini          #+#    #+#             */
-/*   Updated: 2024/10/08 08:48:56 by bmestini         ###   ########.fr       */
+/*   Updated: 2024/10/08 23:43:57 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_files_redirect	*new_file_redirection(char *filename, e_token_type type)
+t_files_redirect	*new_file_redirection(char *filename, t_token_type type)
 {
 	t_files_redirect	*file;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <bmestini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 09:06:13 by mbouras           #+#    #+#             */
-/*   Updated: 2024/10/08 08:49:56 by bmestini         ###   ########.fr       */
+/*   Updated: 2024/10/08 23:44:01 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # include <sys/wait.h>
 # include <unistd.h>
 
-
 typedef enum e_token_type
 {
 	T_WORD,
@@ -36,26 +35,26 @@ typedef enum e_token_type
 	T_REDIRECT_OUT,
 	T_REDIRECT_APPEND,
 	T_HERDOC
-}								e_token_type;
+}								t_token_type;
 
 typedef struct s_env_var
 {
 	char						*key;
 	char						*value;
-	struct s_env_var		*next;
+	struct s_env_var			*next;
 }								t_env_var;
 
 typedef struct s_files_redirect
 {
 	char						*filename;
 	int							should_expand_heredoc;
-	e_token_type				type;
-	struct s_files_redirect	*next;
+	t_token_type				type;
+	struct s_files_redirect		*next;
 }								t_files_redirect;
 
 typedef struct s_token
 {
-	e_token_type				type;
+	t_token_type				type;
 	char						*value;
 	struct s_token				*next;
 	struct s_token				*prev;
@@ -64,7 +63,7 @@ typedef struct s_token
 typedef struct s_cmd_args
 {
 	char						*args;
-	struct s_cmd_args				*next;
+	struct s_cmd_args			*next;
 }								t_cmd_args;
 
 typedef struct s_cmd_minishell
@@ -79,7 +78,7 @@ typedef struct s_cmd_minishell
 	int							*pipe;
 	char						*heredoc_path;
 	t_files_redirect			*files;
-	struct s_cmd_minishell			*next;
+	struct s_cmd_minishell		*next;
 }								t_minishell;
 
 typedef struct s_minishell_data_help
@@ -95,11 +94,11 @@ typedef struct s_minishell_collecter
 {
 	t_minishell					**minishell;
 	t_token						**tokens;
-	t_env_var				**env;
+	t_env_var					**env;
 	int							p;
 }								t_minishell_collecter;
 
-t_minishell_collecter				*get_collector(void);
+t_minishell_collecter			*get_collector(void);
 
 void							set_exit_code(t_env_var *env, int new_val);
 int								count_arguments(char **args);
@@ -114,7 +113,6 @@ int								is_directory(char *cmd);
 int								parse_cmds(char *command);
 char							**check_paths(t_env_var *temp, char *cmd);
 
-
 void							interact_sigint(int sig);
 void							interact_sigquit(int sig);
 void							act_sigint(int sig);
@@ -124,29 +122,28 @@ void							handle_sig(void (*sigint)(int),
 									void (*sigint_old)(int),
 									void (*sigquit_old)(int));
 
-t_env_var					*env_node_new(char *key, char *value);
+t_env_var						*env_node_new(char *key, char *value);
 void							env_add_back(t_env_var **env,
 									t_env_var *node);
 int								env_size(t_env_var *env);
-t_env_var					*before_target(t_env_var *env,
+t_env_var						*before_target(t_env_var *env,
 									t_env_var *target);
 void							at_end(t_env_var **env,
 									char *target_key);
 void							inc_shlvl(t_env_var *env);
 char							*c_paths(void);
-t_env_var					*c_env(void);
+t_env_var						*c_env(void);
 void							get_env_var(t_env_var **env, char **base_env);
-t_env_var					*env_bykey(t_env_var *env, char *key);
+t_env_var						*env_bykey(t_env_var *env, char *key);
 char							**conv_env(t_env_var *env);
 
-t_env_var					*dup_env(t_env_var *env);
-t_env_var					*extr_node(char *arg);
+t_env_var						*dup_env(t_env_var *env);
+t_env_var						*extr_node(char *arg);
 int								parse_node(t_env_var *new, char *arg);
 void							app_value(t_env_var *env,
 									t_env_var *new);
 void							rep_value(t_env_var *env,
 									t_env_var *new);
-
 
 char							*cmd_path(char *cmd, t_env_var *env,
 									int i);
@@ -203,7 +200,6 @@ void							under_score(t_minishell *minishell,
 void							execution(t_minishell *minishell,
 									t_env_var **env);
 
-
 void							add_node(t_env_var *env,
 									t_env_var *new);
 int								export_print(t_env_var **env);
@@ -225,9 +221,6 @@ void							export(t_minishell *minishell,
 									t_env_var **env);
 void							echo(t_minishell *single_mini,
 									t_env_var *env);
-
-
-
 void							check_quote(const char *str,
 									int *in_single_quotes,
 									int *in_double_quotes, int *i);
@@ -241,12 +234,12 @@ void							ins_token(t_token **head, t_token *new_token,
 									t_token *target);
 void							add_token_back(t_token **head,
 									t_token *new_token);
-char							*get_type_token(e_token_type type);
+char							*get_type_token(t_token_type type);
 void							print_tokens(t_token *tokens);
 int								t_size(t_token *tokens);
 t_token							get_last_token(t_token *tokens);
 void							remove_token(t_token **head, t_token *target);
-t_token							*new_token(e_token_type type, char *value);
+t_token							*new_token(t_token_type type, char *value);
 void							add_token_front(t_token **head,
 									t_token *new_token);
 void							find_target(t_token **head, t_token *target,
@@ -262,7 +255,7 @@ int								is_colone(char c);
 int								is_number(char c);
 int								is_alpha(char c);
 t_files_redirect				*new_file_redirection(char *filename,
-									e_token_type type);
+									t_token_type type);
 void							add_file_redirection_back(
 									t_files_redirect **head,
 									t_files_redirect *new_file);
@@ -286,12 +279,12 @@ void							add_minishell_back(t_minishell **head,
 									t_minishell *new_minishell);
 void							print_minishell(t_minishell *minishell);
 void							*new_arg(char *arg);
-void							add_arg_back(t_cmd_args **head, t_cmd_args *new_arg);
+void							add_arg_back(t_cmd_args **head,
+									t_cmd_args *new_arg);
 int								count_cmd_args(char **args);
 void							join_args(t_token *temp, char **args1,
 									char ***args);
 void							print_cmd_args(t_minishell *temp);
-
 
 int								check_charset(char *charset, char c);
 void							initialize_value_split2(int *j, char *quote,
@@ -373,7 +366,6 @@ void							d_quotes2(int *in_double_quote,
 									char *str, int *k, int *j);
 int								check_charset(char *charset, char c);
 int								check_dollars(char *str);
-
 
 void							f_at_exit(void);
 void							f_heredocs(t_files_redirect *files);

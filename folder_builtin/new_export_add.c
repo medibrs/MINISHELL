@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   export_add.c                                       :+:      :+:    :+:   */
+/*   new_export_add.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 23:00:06 by mbouras           #+#    #+#             */
-/*   Updated: 2024/10/07 23:00:38 by mbouras          ###   ########.fr       */
+/*   Updated: 2024/10/08 23:29:21 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 t_env_var	*extr_node(char *arg)
 {
 	t_env_var	*new;
-	char			*equal;
-	char			*key;
-	char			*value;
+	char		*equal;
+	char		*key;
+	char		*value;
 
 	equal = ft_strchr(arg, '=');
 	if (equal == NULL)
@@ -72,7 +72,7 @@ void	app_value(t_env_var *env, t_env_var *new)
 	t_env_var	*target;
 	t_env_var	*temp;
 	t_env_var	*previous;
-	char			*helper;
+	char		*helper;
 
 	new->key[ft_strlen(new->key) - 1] = '\0';
 	if (ft_strncmp(new->key, "PATH", 5) == 0)

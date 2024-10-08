@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_manage_tokens.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <bmestini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:49:10 by bmestini          #+#    #+#             */
-/*   Updated: 2024/10/08 08:49:13 by bmestini         ###   ########.fr       */
+/*   Updated: 2024/10/08 23:43:57 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	remove_token(t_token **head, t_token *target)
 	}
 }
 
-t_token	*new_token(e_token_type type, char *value)
+t_token	*new_token(t_token_type type, char *value)
 {
 	t_token	*token;
 

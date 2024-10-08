@@ -1,15 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   open_files.c                                       :+:      :+:    :+:   */
+/*   new_open_files.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 23:01:34 by mbouras           #+#    #+#             */
-/*   Updated: 2024/10/07 23:01:35 by mbouras          ###   ########.fr       */
+/*   Updated: 2024/10/08 23:43:57 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../minishell.h"
 
@@ -29,7 +28,7 @@ int	file_error(t_minishell *minishell, t_env_var *env, char *filename)
 	exit(1);
 }
 
-int	check_std_in_out(e_token_type type, char *filename)
+int	check_std_in_out(t_token_type type, char *filename)
 {
 	if (ft_strncmp(filename, "/dev/stdout", ft_strlen(filename) + 1) == 0
 		&& (type == T_REDIRECT_OUT || type == T_REDIRECT_APPEND))

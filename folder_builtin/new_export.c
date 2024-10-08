@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   export.c                                           :+:      :+:    :+:   */
+/*   new_export.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 23:00:17 by mbouras           #+#    #+#             */
-/*   Updated: 2024/10/07 23:00:31 by mbouras          ###   ########.fr       */
+/*   Updated: 2024/10/08 23:28:22 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	export_print(t_env_var **env)
 int	export_add(t_minishell *minishell, t_env_var *env)
 {
 	t_env_var	*new;
-	int				i;
-	int				exit_value;
+	int			i;
+	int			exit_value;
 
 	i = 1;
 	new = NULL;

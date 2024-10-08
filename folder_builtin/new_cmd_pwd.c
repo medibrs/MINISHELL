@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_pwd.c                                          :+:      :+:    :+:   */
+/*   new_cmd_pwd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 22:59:44 by mbouras           #+#    #+#             */
-/*   Updated: 2024/10/07 23:00:47 by mbouras          ###   ########.fr       */
+/*   Updated: 2024/10/08 23:28:34 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	pwd(t_minishell *singl_mini, t_env_var *env)
 {
 	t_env_var	*_pwd;
-	char			new_path[1024];
+	char		new_path[1024];
 
 	if (open_files(singl_mini, env, singl_mini->files))
 		return ;

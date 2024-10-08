@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <bmestini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:49:44 by bmestini          #+#    #+#             */
-/*   Updated: 2024/10/08 08:49:47 by bmestini         ###   ########.fr       */
+/*   Updated: 2024/10/08 23:25:13 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ void	minishell_loop(t_env_var **env, t_token **tokens,
 int	main(int argc, char **argv, char **base_env)
 {
 	t_env_var		*env;
-	t_token				*tokens;
-	t_minishell			*minishell;
+	t_token			*tokens;
+	t_minishell		*minishell;
 
 	(void)argv;
 	if (argc > 1)

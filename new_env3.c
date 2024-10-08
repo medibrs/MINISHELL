@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_env3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <bmestini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:50:09 by bmestini          #+#    #+#             */
-/*   Updated: 2024/10/08 08:50:12 by bmestini         ###   ########.fr       */
+/*   Updated: 2024/10/08 23:27:58 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	set_exit_code(t_env_var *env, int new_val)
 t_env_var	*c_env(void)
 {
 	t_env_var	*env;
-	char			current_path[1024];
+	char		current_path[1024];
 
 	if (getcwd(current_path, 1024) == NULL)
 	{
@@ -93,8 +93,8 @@ t_env_var	*c_env(void)
 void	inc_shlvl(t_env_var *env)
 {
 	t_env_var	*shlvl;
-	char			*new_lvl;
-	int				lvl;
+	char		*new_lvl;
+	int			lvl;
 
 	shlvl = env_bykey(env, "SHLVL");
 	if (shlvl == NULL || shlvl->value == NULL)

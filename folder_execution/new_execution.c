@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execution.c                                        :+:      :+:    :+:   */
+/*   new_execution.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 23:01:04 by mbouras           #+#    #+#             */
-/*   Updated: 2024/10/07 23:01:06 by mbouras          ###   ########.fr       */
+/*   Updated: 2024/10/08 23:27:19 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ void	under_score(t_minishell *minishell, t_env_var **env)
 		{
 			free(env_under_score->value);
 			env_under_score->value
-				= ft_strdup(minishell->args[count_arguments(minishell->args) - 1]);
+				= ft_strdup(
+					minishell->args[count_arguments(minishell->args) - 1]);
 		}
 		else
 		{

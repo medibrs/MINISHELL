@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_tokenize_input.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <bmestini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:49:26 by bmestini          #+#    #+#             */
-/*   Updated: 2024/10/08 08:49:28 by bmestini         ###   ########.fr       */
+/*   Updated: 2024/10/08 23:32:13 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ t_token	*tokenize_input(const char *str)
 	head = NULL;
 	i = 0;
 	while (str[i])
-	
 	{
 		while (str[i] && ft_strchr(" \t\n\v\f\r", str[i]))
 			i++;

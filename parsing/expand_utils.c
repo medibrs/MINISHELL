@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <bmestini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:48:03 by bmestini          #+#    #+#             */
-/*   Updated: 2024/10/08 08:48:05 by bmestini         ###   ########.fr       */
+/*   Updated: 2024/10/08 23:32:27 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*change_value(char *str, int *i, int *index, char *env_variable)
 {
 	char			*new_val;
-	t_env_var	*get_env;
+	t_env_var		*get_env;
 	char			*value;
 	char			*first;
 	char			*last;

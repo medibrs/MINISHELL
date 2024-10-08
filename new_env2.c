@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_env2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <bmestini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:50:04 by bmestini          #+#    #+#             */
-/*   Updated: 2024/10/08 08:50:07 by bmestini         ###   ########.fr       */
+/*   Updated: 2024/10/08 23:25:52 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	env_size(t_env_var *env)
 {
-	int				i;
+	int			i;
 	t_env_var	*temp;
 
 	i = 0;

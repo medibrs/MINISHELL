@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unset.c                                            :+:      :+:    :+:   */
+/*   new_unset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 23:00:22 by mbouras           #+#    #+#             */
-/*   Updated: 2024/10/07 23:00:25 by mbouras          ###   ########.fr       */
+/*   Updated: 2024/10/08 23:29:04 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	unset(t_minishell *minishell, t_env_var **env)
 {
 	t_env_var	*target;
 	t_env_var	*previous;
-	int				i;
+	int			i;
 
 	if (verify_files(minishell, env))
 		return ;

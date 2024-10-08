@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_manage_tokens2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <bmestini@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:49:16 by bmestini          #+#    #+#             */
-/*   Updated: 2024/10/08 08:49:17 by bmestini         ###   ########.fr       */
+/*   Updated: 2024/10/08 23:43:57 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	add_token_back(t_token **head, t_token *new_token)
 	}
 }
 
-char	*get_type_token(e_token_type type)
+char	*get_type_token(t_token_type type)
 {
 	if (type == T_WORD)
 		return ("T_WORD");
