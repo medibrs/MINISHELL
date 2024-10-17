@@ -3,116 +3,99 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtamouss <rtamouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 12:58:14 by bmestini          #+#    #+#             */
-/*   Updated: 2023/11/17 18:02:59 by bmestini         ###   ########.fr       */
+/*   Created: 2023/11/12 20:49:00 by rtamouss          #+#    #+#             */
+/*   Updated: 2024/05/13 09:10:44 by rtamouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	wc(char const *s, char c)
+static int	ft_count_words(char const *str, char sep)
 {
-	size_t	i;
-	size_t	count;
+	int	count;
+	int	i;
 
-	i = 0;
 	count = 0;
-	while (s[i])
+	i = 0;
+	while (str[i])
 	{
-		if (s[i] == c)
+		while (str[i] && (str[i] == sep))
 			i++;
-		else
+		if (str[i] && !(str[i] == sep))
 		{
 			count++;
-			while (s[i] != c && s[i])
+			while (str[i] && !(str[i] == sep))
 				i++;
 		}
 	}
 	return (count);
 }
 
-static char	*gw(const char *s, unsigned int *i1, char c)
+static char	**ft_free(char **strs)
 {
-	int		i;
-	char	*copy;
-	int		wl;
+	int	i;
 
-	wl = 0;
-	while (s[*i1] && s[*i1] == c)
-		(*i1)++;
-	i = *i1;
-	while (s[i] && s[i] != c)
-	{
-		wl++;
-		i++;
-	}
-	copy = malloc(sizeof(char) * (wl + 1));
-	if (!copy)
-		return (NULL);
 	i = 0;
-	while (s[*i1] && s[*i1] != c)
-	{
-		copy[i] = s[*i1];
-		(*i1)++;
-		i++;
-	}
-	copy[i] = '\0';
-	return (copy);
+	while (strs[i])
+		free(strs[i++]);
+	free(strs);
+	return (0);
 }
 
-static char	**err(char **arr)
+static char	**do_it(char **res, char const *s, char c, int i)
 {
-	unsigned int	i;
+	int	start;
+	int	end;
+	int	j;
 
-	i = 0;
-	while (arr[i])
+	j = 0;
+	while (s[i])
 	{
-		free(arr[i]);
-		i++;
+		while (s[i] && s[i] == c)
+			i++;
+		start = i;
+		while (s[i] && s[i] != c)
+			i++;
+		end = i;
+		if (end > start)
+		{
+			res[j] = (char *)malloc((end - start + 1) * sizeof(char));
+			if (!res[j])
+				return (ft_free(res));
+			ft_strlcpy(res[j], &s[start], end - start + 1);
+			j++;
+		}
 	}
-	free(arr);
-	return (NULL);
+	res[j] = NULL;
+	return (res);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char			**copy;
-	unsigned int	i;
-	unsigned int	i1;
-	unsigned int	wc1;
+	char	**res;
+	int		i;
 
 	i = 0;
-	i1 = 0;
 	if (!s)
 		return (NULL);
-	wc1 = wc(s, c);
-	copy = malloc(sizeof(char *) * (wc1 + 1));
-	if (!copy)
+	res = (char **)malloc((ft_count_words(s, c) + 1) * sizeof(char *));
+	if (!res)
 		return (NULL);
-	while (i < wc1)
-	{
-		copy[i] = gw(s, &i1, c);
-		if (!copy[i])
-			return (err(copy));
-		i++;
-	}
-	copy[i] = 0;
-	return (copy);
+	return (do_it(res, s, c, i));
 }
 
-// #include<stdio.h>
-// int main ()
+// #include <stdio.h>
+// int	 main(void)
 // {
-// 	char *s = ",,,,bahae,is,,a ok,,";
-// 	char c = ',';	
-// 	//char **splitted = 
-// 	ft_split(NULL, c);
+// 	char *s  = ",,,,hello,world,this,a test   ,,,,, helo,,,";
+// 	char **split = ft_split(s,',');
 // 	int i = 0;
-	// while(splitted[i] != NULL)
-	// {
-	// 	printf("value : %s\n", splitted[i]);
-	// 	i++;
-	// }
-//}
+// 	while (split[i] != NULL)
+// 	{
+// 		printf("%d = |%s|\n" , i, split[i]);
+// 		i++;
+// 	}
+// 	return 0;
+// }

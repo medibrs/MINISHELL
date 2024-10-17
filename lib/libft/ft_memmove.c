@@ -3,44 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtamouss <rtamouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 17:16:19 by bmestini          #+#    #+#             */
-/*   Updated: 2023/11/09 17:16:22 by bmestini         ###   ########.fr       */
+/*   Created: 2023/11/12 01:51:52 by rtamouss          #+#    #+#             */
+/*   Updated: 2023/11/12 02:35:22 by rtamouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char		*d;
-	const unsigned char	*s;
+	size_t			i;
+	unsigned char	*dstptr;
+	unsigned char	*srcptr;
 
-	d = dest;
-	s = src;
-	if (!d && !s)
+	dstptr = (unsigned char *)dst;
+	srcptr = (unsigned char *)src;
+	i = 0;
+	if (dstptr == NULL && srcptr == NULL)
 		return (NULL);
-	if (d == s)
-		return (d);
-	if (d < s)
-		ft_memcpy(d, s, n);
+	if (dstptr > srcptr)
+	{
+		while (len-- > 0)
+			dstptr[len] = srcptr[len];
+	}
 	else
 	{
-		while (n--)
-			*(d + n) = *(s + n);
+		while (i < len)
+		{
+			dstptr[i] = srcptr[i];
+			i++;
+		}
 	}
-	return (dest);
+	return (dst);
 }
-
-/*#include<stdio.h>
-#include<string.h>
-int main ()
-{
-	char dest[6];
-	char src[] = "bahaeddine";
-
-	char *result = ft_memmove("hello", "hello", 8);
-
-	printf("%s", result);
-}*/

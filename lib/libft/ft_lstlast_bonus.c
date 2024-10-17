@@ -3,44 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtamouss <rtamouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/12 11:05:30 by bmestini          #+#    #+#             */
-/*   Updated: 2024/10/08 23:31:12 by mbouras          ###   ########.fr       */
+/*   Created: 2023/11/14 00:22:28 by rtamouss          #+#    #+#             */
+/*   Updated: 2024/03/09 15:22:17 by rtamouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_listlast(t_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-	{
-		lst = lst->next;
-	}
-	return (lst);
+	t_list	*ptr;
+
+	ptr = lst;
+	if (!ptr)
+		return (0);
+	while (ptr->next)
+		ptr = ptr -> next;
+	return (ptr);
 }
-
-/*#include<stdio.h>
-int main ()
-{
-    t_list *node1 = ft_lstnew(1);
-    t_list *node2 = ft_lstnew(2);
-    t_list *node3 = ft_lstnew(3);
-
-    node1->next = node2;
-    node2->next = node3;
-
-    t_list *lastnode = ft_listlast(node1);
-
-    if (lastnode)
-    {
-        printf("Data of the last node : %d\n", lastnode -> data);
-    }
-
-    free(node1);
-    free(node2);
-    free(node3);
-}*/

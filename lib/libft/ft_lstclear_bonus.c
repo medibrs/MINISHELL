@@ -1,27 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtamouss <rtamouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/12 16:35:39 by bmestini          #+#    #+#             */
-/*   Updated: 2023/11/17 13:45:23 by bmestini         ###   ########.fr       */
+/*   Created: 2023/11/14 01:32:24 by rtamouss          #+#    #+#             */
+/*   Updated: 2023/11/17 17:39:01 by rtamouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
 	t_list	*tmp;
 
-	if (!del)
-		return ;
-	while (lst && *lst)
+	if (lst && del)
 	{
-		tmp = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = tmp;
+		while (*lst)
+		{
+			tmp = (*lst)->next;
+			del((*lst)->content);
+			free(*lst);
+			*lst = tmp;
+		}
+		*lst = NULL;
 	}
 }
+
+// static void	del(void *content)
+// {
+// 	free(content);
+// }
+// int	main(void)
+// {
+// 	t_list *n1 = ft_lstnew("hello");
+// 	t_list *n2 = ft_lstnew("world");
+// 	t_list *n3 = ft_lstnew("hhh");
+// 	ft_lstadd_back(&n1, n2);
+// 	ft_lstadd_back(&n1, n3);
+// 	while (n1)
+// 	{
+// 		printf("%s\n", n1 -> content);
+// 		n1 = n1 -> next;
+// 	}
+// 	printf("after freeing\n");
+// 	ft_lstclear(&n1, del);
+// 	while (n1)
+// 	{
+// 		printf("%s\n", n1 -> content);
+// 		n1 = n1 -> next;
+// 	}
+// 	return (0);
+// }

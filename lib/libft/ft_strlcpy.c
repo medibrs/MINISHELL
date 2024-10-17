@@ -3,41 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtamouss <rtamouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 14:50:35 by bmestini          #+#    #+#             */
-/*   Updated: 2024/10/08 23:30:31 by mbouras          ###   ########.fr       */
+/*   Created: 2023/11/03 18:01:32 by rtamouss          #+#    #+#             */
+/*   Updated: 2023/11/23 19:56:39 by rtamouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
-	size_t	slen;
+	size_t	len;
 
+	len = 0;
 	i = 0;
-	slen = ft_strlen((char *)src);
-	if (size == 0)
-		return (slen);
-	if (size)
+	while (src[len])
+		len++;
+	if (dstsize == 0)
+		return (len);
+	while (i < dstsize - 1 && src[i])
 	{
-		while (src[i] && i < size - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
+		dst[i] = src[i];
+		i++;
 	}
 	dst[i] = '\0';
-	return (slen);
+	return (len);
 }
-
-/*int	main(void)
-{
-	char	d[999];
-	char	s[];
-
-	s[] = "bahaeddine";
-	printf("%ld me", ft_strlcpy(d, s, 5));
-}*/

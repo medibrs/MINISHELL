@@ -3,39 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtamouss <rtamouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 17:27:22 by bmestini          #+#    #+#             */
-/*   Updated: 2023/11/15 10:55:23 by bmestini         ###   ########.fr       */
+/*   Created: 2023/11/04 00:40:43 by rtamouss          #+#    #+#             */
+/*   Updated: 2023/11/20 10:44:13 by rtamouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t			i;
-	unsigned char	*p;
+	unsigned char	*ptr;
 
+	ptr = (unsigned char *) b;
 	i = 0;
-	p = s;
-	while (i < n)
+	while (i < len)
 	{
-		p[i] = c;
+		ptr[i] = (unsigned char) c;
 		i++;
 	}
-	return (p);
+	return (ptr);
 }
-
-// int main ()
-// {
-// 	char s[] = "tati";
-// 	printf("%s", ft_memset(s, 'a', 4));
-// }
-// int main()
-// {
-// 	int arr[] = {4, 5, 9};
-
-// 	printf("%d\n", arr[0]);
-
-// }

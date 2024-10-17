@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calloc.c                                           :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtamouss <rtamouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 16:29:33 by bmestini          #+#    #+#             */
-/*   Updated: 2023/11/14 18:19:39 by bmestini         ###   ########.fr       */
+/*   Created: 2023/11/04 23:50:51 by rtamouss          #+#    #+#             */
+/*   Updated: 2023/11/17 16:08:19 by rtamouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdint.h>
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char	*ptr;
+	void	*s;
 
-	if (size != 0 && nmemb > SIZE_MAX / size)
+	if ((size != 0) && (count > SIZE_MAX / size))
 		return (NULL);
-	ptr = malloc(size * nmemb);
-	if (!ptr)
+	s = (void *)malloc(count * size);
+	if (s == NULL)
 		return (NULL);
-	ft_bzero(ptr, nmemb * size);
-	return (ptr);
+	ft_bzero (s, size * count);
+	return (s);
 }
+
+// #include <stdio.h>
+// #include <stdlib.h>
+// int	main(void)
+// {
+// 	if(ft_calloc(23,2)) printf("done\n"); else printf("hhh\n");
+// 	if(calloc(23, 2)) printf("done\n"); else printf("hhh\n");
+// 	// printf("%lu", (SIZE_MAX )/SIZE_MAX + 12);
+// 	return (0);
+// }

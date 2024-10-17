@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtamouss <rtamouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 22:24:30 by bmestini          #+#    #+#             */
-/*   Updated: 2023/11/20 15:17:20 by bmestini         ###   ########.fr       */
+/*   Created: 2023/11/08 23:17:55 by rtamouss          #+#    #+#             */
+/*   Updated: 2023/11/17 16:19:05 by rtamouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	nlen(int n)
+static int	count_digits(long n)
 {
-	size_t	count;
+	int	count;
 
 	count = 0;
-	if (n <= 0)
+	if (n < 0)
 	{
 		count++;
-		n = -n;
+		n *= -1;
 	}
-	while (n)
+	while (n != 0)
 	{
 		n /= 10;
 		count++;
@@ -32,42 +32,36 @@ static size_t	nlen(int n)
 
 char	*ft_itoa(int n)
 {
-	char	*copy;
-	int		numlen;
-	long	nb;
-	int		j;
+	int		len;
+	char	*s;
 
-	j = 0;
-	numlen = nlen(n);
-	copy = (char *)malloc((numlen + 1) * sizeof(char));
-	if (!copy)
+	len = 0;
+	if (n == 0)
+		return (ft_strdup("0"));
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	len = count_digits(n);
+	s = (char *)malloc(len + 1);
+	if (!s)
 		return (0);
-	nb = n;
-	copy[numlen] = '\0';
-	if (nb < 0)
+	if (n < 0)
 	{
-		copy[0] = '-';
-		nb = -nb;
-		j = 1;
+		s[0] = '-';
+		n *= -1;
 	}
-	numlen--;
-	while ((numlen >= 0 && j == 0) || (numlen > 0 && j == 1))
+	s[len--] = '\0';
+	while (n != 0)
 	{
-		copy[numlen--] = nb % 10 + 48;
-		nb /= 10;
+		s[len] = (n % 10) + 48;
+		n = n / 10;
+		len--;
 	}
-	return (copy);
+	return (s);
 }
 
-// int	main(void) {
-// 	char c;
-
-// 	// while ((c = getchar()) != EOF) {
-// 	// 	//Process each character
-// 	// 	putchar(c);
-// 	// }
-
-// 	printf("\nEOF detected. End of input%d .\n", EOF);
-
+// int main(void)
+// {
+// 	printf("%d\n",count_digits(21474836494));
+// 	printf("%s\n",ft_itoa(214748364));
 // 	return (0);
 // }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtamouss <rtamouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 16:35:04 by bmestini          #+#    #+#             */
-/*   Updated: 2023/11/17 14:38:10 by bmestini         ###   ########.fr       */
+/*   Created: 2023/11/05 16:06:36 by rtamouss          #+#    #+#             */
+/*   Updated: 2023/11/20 13:15:14 by rtamouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,16 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	while (n--)
+	size_t			i;
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)s;
+	i = 0;
+	while (i < n)
 	{
-		if (*(unsigned char *)s == (unsigned char)c)
-			return ((char *)s);
-		s++;
+		if (ptr[i] == (unsigned char)c)
+			return ((void *)(ptr + i));
+		i++;
 	}
 	return (NULL);
 }
-
-/*#include <stdio.h>
-
-int	main(void) {
-	const char *test_string = "Hello, World!";
-	char search_char = 'l';
-	size_t search_length = 3;
-
-	char *result1 = ft_memchr(test_string, search_char, search_length);
-	char *result2 = memchr(test_string,search_char,search_length);
-	printf("me '%s'\n", result1);
-	printf("not me '%s'", result2);
-}*/

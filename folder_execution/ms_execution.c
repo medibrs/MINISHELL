@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_execution.c                                    :+:      :+:    :+:   */
+/*   ms_execution.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 23:01:04 by mbouras           #+#    #+#             */
-/*   Updated: 2024/10/08 23:27:19 by mbouras          ###   ########.fr       */
+/*   Updated: 2024/10/17 18:13:15 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	execution(t_minishell *minishell, t_env_var **env)
 {
 	int	stdout;
 	int	stdin;
-
+ 
 	stdout = dup(STDOUT_FILENO);
 	stdin = dup(STDIN_FILENO);
 	minishell_init(minishell, cmd_count(minishell));

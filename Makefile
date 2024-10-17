@@ -59,7 +59,7 @@ OBJ = ${SRC:.c=.o}
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) -lreadline -lhistory
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) 
 	@echo "compiled"
 
 $(LIBFT):

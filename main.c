@@ -6,7 +6,7 @@
 /*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 08:49:44 by bmestini          #+#    #+#             */
-/*   Updated: 2024/10/09 00:15:46 by mbouras          ###   ########.fr       */
+/*   Updated: 2024/10/17 18:13:09 by mbouras          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	minishell_loop(t_env_var **env, t_token **tokens,
 		if (str[0] != '\0' && check_whitespaces(str))
 			add_history(str);
 		*tokens = tokenize_input(str);
-		*tokens = expand(*tokens);
+		*tokens = expand(*tokens); 
 		if (check_whitespaces(str) == 0 || syntax_checker(*tokens, str))
 		{
 			free(str);

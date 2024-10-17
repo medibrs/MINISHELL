@@ -3,52 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbouras <mbouras@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtamouss <rtamouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/12 14:57:33 by bmestini          #+#    #+#             */
-/*   Updated: 2024/10/08 23:29:47 by mbouras          ###   ########.fr       */
+/*   Created: 2023/11/14 00:28:40 by rtamouss          #+#    #+#             */
+/*   Updated: 2023/11/17 17:07:06 by rtamouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_listadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*last;
+	t_list	*tmp;
 
-	if (!lst && !new)
-		return ;
-	last = *lst;
-	if (*lst)
-	{
-		while (last->next)
-			last = last->next;
-		last->next = new;
-	}
-	else
+	if (!*lst)
 		*lst = new;
+	else
+	{
+		tmp = *lst;
+		while (tmp -> next)
+			tmp = tmp -> next;
+		tmp -> next = new;
+	}
 }
 
-// void del(void *content)
+// int	main(void)
 // {
-// 	free(content);
-// }
-
-// int main ()
-// {
-// 		t_list *lst = ft_lstnew(ft_strdup("bahae"));
-// 	ft_listadd_back(&lst, ft_lstnew(ft_strdup("mestini")));
-// 	ft_listadd_back(&lst, ft_lstnew(ft_strdup("mok")));
-// 	ft_lstadd_front(&lst, ft_lstnew(ft_strdup("kys")));
-// 	t_list *current = lst;
-// 	// while(current)
-// 	// {
-// 	// 	printf("%s", (char *)current->content);
-// 	// 	current = current -> next;
-// 	// }
-// 	int size = ft_lstsize(lst);
-// 	printf("%s\n", lst->next->content);
-// 	printf("%d\n", size);
-
-// 	ft_lstclear(&lst, &del);
+// 	t_list *n1 = ft_lstnew("hello");
+// 	t_list *n2 = ft_lstnew("world");
+// 	t_list *n3 = malloc(sizeof(t_list));
+// 	if (!n3)
+// 		return 1;
+// 	n3 -> content = "hhhhh";
+// 	n3 -> next = NULL;
+// 	ft_lstadd_back(&n1, n2);
+// 	ft_lstadd_back(&n1, n3);
+// 	while(n1)
+// 	{
+// 		printf("%s\n" , n1->content);
+// 		n1 = n1 -> next;
+// 	}
+// 	return (0);
 // }

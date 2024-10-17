@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtamouss <rtamouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 08:25:13 by bmestini          #+#    #+#             */
-/*   Updated: 2023/11/20 19:02:36 by bmestini         ###   ########.fr       */
+/*   Created: 2023/11/14 01:57:44 by rtamouss          #+#    #+#             */
+/*   Updated: 2023/11/17 18:20:17 by rtamouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,73 +14,68 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*newl;
-	t_list	*elem;
-	void	*newc;
+	t_list	*new_list;
+	t_list	*new_node;
+	void	*new_content;
 
-	newl = NULL;
-	while (lst && f && del)
+	new_list = NULL;
+	while (lst)
 	{
-		newc = f(lst ->content);
-		elem = ft_lstnew(newc);
-		if (elem == NULL)
+		new_content = f(lst->content);
+		new_node = ft_lstnew(new_content);
+		if (!new_node)
 		{
-			ft_lstclear(&newl, del);
-			free(newc);
+			del(new_content);
+			ft_lstclear(&new_list, del);
 			return (NULL);
 		}
-		ft_listadd_back(&newl, elem);
+		ft_lstadd_back(&new_list, new_node);
 		lst = lst->next;
 	}
-	return (newl);
+	return (new_list);
 }
 
-/*#include<stdio.h>
+// void		*to_uppercase(void *content)
+// {
+// 	char	*str;
+// 	char	*new_str;
+// 	int		i;
 
-void	*duplicate_content(void *content)
-{
-	return (ft_strdup((char *)content));
-}
+// 	str = (char *)content;
+// 	new_str = malloc(ft_strlen(str) + 1);
+// 	if (!new_str)
+// 		return (NULL);
+// 	i = 0;
+// 	while (str[i])
+// 	{
+// 		new_str[i] = ft_toupper(str[i]);
+// 		i++;
+// 	}
+// 	new_str[i] = '\0';
+// 	return (new_str);
+// }
+// void	del(void *content)
+// {
+//     free(content);
+// }
 
-// Function to delete a string
-void	delete_content(void *content)
-{
-	free(content);
-}
-
-int	main(void)
-{
-	// Create a linked list with some strings
-	t_list *lst = ft_lstnew("Hello");
-	ft_listadd_back(&lst, ft_lstnew("world"));
-	ft_listadd_back(&lst, ft_lstnew("from"));
-	ft_listadd_back(&lst, ft_lstnew("Linked"));
-	ft_listadd_back(&lst, ft_lstnew("List"));
-
-	// Apply ft_lstmap to duplicate the strings
-	t_list *duplicated_lst = ft_lstmap(lst, duplicate_content, delete_content);
-
-	// Print the original list
-	printf("Original List:\n");
-	t_list *current = lst;
-	while (current != NULL)
-	{
-		printf("%s\n", (char *)current->content);
-		current = current->next;
-	}
-
-	// Print the duplicated list
-	printf("\nDuplicated List:\n");
-	current = duplicated_lst;
-	while (current != NULL)
-	{
-		printf("%s\n", (char *)current->content);
-		current = current->next;
-	}
-
-	// Free the memory allocated for the lists
-	ft_lstclear(&lst, free);
-	ft_lstclear(&duplicated_lst, free);
-
-	return (0);
-}*/
+// int	main(void)
+// {
+// 	t_list 	*list = ft_lstnew("Hello");
+// 	ft_lstadd_back(&list, ft_lstnew("world"));
+// 	t_list	*new_list = ft_lstmap(list, to_uppercase, del);
+// 	t_list *temp = new_list;
+// 	printf("our list : \n");
+// 	while(list)
+// 	{
+// 		printf("%s\n", (char *)list->content);
+// 		list = list -> next;
+// 	}
+// 	printf("the new_list : \n");
+// 	while(temp)
+// 	{
+// 		printf("%s\n", (char *)temp->content);
+// 		temp = temp -> next;
+// 	}
+// 	return (0);
+// }

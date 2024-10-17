@@ -1,46 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strnstr.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: radouane <radouane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 13:33:43 by bmestini          #+#    #+#             */
-/*   Updated: 2023/11/19 12:57:33 by bmestini         ###   ########.fr       */
+/*   Created: 2023/11/05 18:43:24 by rtamouss          #+#    #+#             */
+/*   Updated: 2024/03/08 09:46:05 by radouane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
-	size_t	lilen;
+	size_t	j;
 
 	i = 0;
-	lilen = ft_strlen(little);
-	if (*little == 0 || (big == 0 && len == 0))
-		return ((char *)big);
-	while (big[i] && i < len)
+	j = 0;
+	if (needle[j] == '\0' && len == 0)
+		return ((char *)haystack);
+	else if (!len)
+		return (NULL);
+	else if (needle[j] == '\0')
+		return ((char *)haystack);
+	while (haystack[i] && i < len)
 	{
-		if (big[i] == *little && len - i >= lilen && ft_strncmp(&big[i], little,
-				lilen) == 0)
-			return ((char *)&big[i]);
+		j = 0;
+		while (haystack[i + j] == needle[j] && i + j < len)
+		{
+			if (needle[j + 1] == '\0')
+				return ((char *)&haystack[i]);
+			j++;
+		}
 		i++;
 	}
 	return (NULL);
 }
 
-/*#include <stdio.h>
-#include <string.h>
-
-int	main(void)
-{
-	char	*b;
-	char	*l;
-
-	b = NULL;
-	l = NULL;
-	printf("%s\n", ft_strnstr(b, l, 0));
-	//printf("%s\n", strnstr(b, l , 0));
-}*/
+// #include <string.h>
+// int	main(void)
+// {
+// 	char *needle = "sss";
+// 	char *haystack = "sss";
+// 	printf("%s",ft_strnstr(haystack,needle, 5));
+// 	printf("\n%s",strnstr(haystack,needle,5));
+// 	return (0);
+// }

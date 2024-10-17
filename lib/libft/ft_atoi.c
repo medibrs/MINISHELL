@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atoi.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmestini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: akrid <akrid@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 15:28:48 by bmestini          #+#    #+#             */
-/*   Updated: 2023/11/20 17:08:53 by bmestini         ###   ########.fr       */
+/*   Created: 2023/11/01 18:30:48 by rtamouss          #+#    #+#             */
+/*   Updated: 2024/06/29 20:06:11 by akrid            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,38 @@
 
 int	ft_atoi(const char *str)
 {
-	int			i;
-	long long	r;
-	int			sign;
+	int		i;
+	int		sign;
+	long	res;
 
 	i = 0;
-	r = 0;
+	res = 0;
 	sign = 1;
-	while (str[i] && ((str[i] >= 9 && str[i] <= 13) || str[i] == 32))
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			sign = -1;
+			sign *= -1;
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		r = (r * 10) + str[i] - '0';
+		res = (res * 10) + (str[i] - 48);
 		i++;
 	}
-	if (r > 9223372036854775807 && sign == -1)
-		return (0);
-	if (r < -9223372036854775807 && sign == 1)
-		return (-1);
-	return (r * sign);
+	res *= sign;
+	return (res);
 }
 
-/*int main(void)
-{
-	//char *str = "-99999";
-	char *str = "92233720368547758071";
-	int result = ft_atoi(str);
-	int result1 = atoi(str);
-
-	printf("Result: %d\n", result);
-
-	printf("Result: %d\n", result1);
-	return (0);
-}*/
+// int	main(void)
+// {
+// 	int b;
+// 	b = ft_atoi("     			0");
+// 	printf("%d\n",b);
+// 	printf("----------\n");
+// 	int b1;
+// 	b1 = atoi("     				0	");
+// 	printf("%d\n",b1);
+// 	return (0);
+// }
